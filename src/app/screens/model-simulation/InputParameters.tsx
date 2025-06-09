@@ -65,7 +65,7 @@ function InputParameters() {
                   onClick={() => setSelectedTechnology(item)}
                   className={`cursor-pointer w-full h-full flex items-center justify-center text-center border-r border-r-gray-200 transition duration-300 ${
                     selectedTechnology === item
-                      ? "bg-gray-900 text-background"
+                      ? "bg-primary text-background"
                       : "text-foreground hover:bg-gray-100"
                   }`}
                 >
@@ -87,7 +87,7 @@ function InputParameters() {
                 }
               />
             </div>
-            <Button color="gray-900" text="Run Simulation" />
+            <Button color="primary" text="Run Simulation" />
           </div>
         </CardWrapper>
       </div>

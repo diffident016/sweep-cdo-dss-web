@@ -65,7 +65,7 @@ function UserHeader({ user }: { user: User }) {
         !showHeader && "hidden"
       } relative flex flex-row gap-3 items-center h-10 px-4 transition-all duration-300`}
     >
-      <div className="rounded-full w-10 h-10 bg-gray-900 flex items-center justify-center">
+      <div className="rounded-full w-10 h-10 bg-primary flex items-center justify-center">
         <p className="text-white font-bold tracking-wider">
           {getInitial(user.name)}
         </p>

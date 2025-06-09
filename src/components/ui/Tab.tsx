@@ -29,7 +29,7 @@ function Tab({
           <div
             key={tab.name}
             className={`transition duration-300 w-full flex items-center justify-center text-sm font-medium cursor-pointer rounded-md ${
-              activeTab === tab.tab ? "bg-gray-900 text-background" : ""
+              activeTab === tab.tab ? "bg-primary text-background" : ""
             }`}
             onClick={() => handleTabClick(tab.tab)}
           >

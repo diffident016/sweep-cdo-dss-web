@@ -15,6 +15,7 @@ import {
   LuHandCoins,
   LuChartSpline,
   LuScale,
+  LuZap,
 } from "react-icons/lu";
 
 function Sidebar() {
@@ -67,6 +68,11 @@ function Sidebar() {
       to: "/dashboard/policy-assistant",
       icon: <LuScale />,
     },
+    {
+      name: "Load Profile",
+      to: "/dashboard/load-profile",
+      icon: <LuZap />,
+    },
   ];
 
   const tools = [
@@ -89,8 +95,8 @@ function Sidebar() {
           onClick={() => router.push(item.to)}
           className={`${
             path === item.to
-              ? `${isOpen && "bg-gray-900 text-background"} bg-gray-200`
-              : `hover:bg-gray-200 ${isOpen && "text-foreground"}bg-background`
+              ? `${isOpen && "bg-primary text-background"} bg-gray-200`
+              : `hover:bg-gray-200 ${isOpen && "text-foreground"} bg-background`
           } flex flex-row gap-2 items-center cursor-pointer font-medium w-full ${
             isOpen ? "p-2 rounded-md" : "p-0 py-2 justify-center"
           } transition duration-300 `}
@@ -99,7 +105,7 @@ function Sidebar() {
           {isOpen && item.name}
         </button>
         {path === item.to && !isOpen && (
-          <div className="h-full right-0 top-0 absolute bg-gray-900 w-1"></div>
+          <div className="h-full right-0 top-0 absolute bg-primary w-1"></div>
         )}
       </li>
     );
@@ -130,19 +136,23 @@ function Sidebar() {
             )}
           </button>
         </div>
-        <ul className={`w-full flex flex-col mt-4 gap-3`}>
-          {navigation.map((item) => sideBarItem({ item }))}
-        </ul>
-        {isOpen ? (
-          <p className="font-medium pt-3">Tools</p>
-        ) : (
-          <hr className="w-1/2 mt-2" />
-        )}
-        <ul
-          className={`w-full flex flex-col mt-2 ${isOpen ? "gap-2" : "gap-3"}`}
-        >
-          {tools.map((item) => sideBarItem({ item }))}
-        </ul>
+        <div className="overflow-auto h-full">
+          <ul className={`w-full flex flex-col mt-4 gap-3`}>
+            {navigation.map((item) => sideBarItem({ item }))}
+          </ul>
+          {isOpen ? (
+            <p className="font-medium pt-3">Tools</p>
+          ) : (
+            <hr className="w-1/2 mt-2" />
+          )}
+          <ul
+            className={`w-full flex flex-col mt-2 ${
+              isOpen ? "gap-2" : "gap-3"
+            }`}
+          >
+            {tools.map((item) => sideBarItem({ item }))}
+          </ul>
+        </div>
       </div>
     </div>
   );

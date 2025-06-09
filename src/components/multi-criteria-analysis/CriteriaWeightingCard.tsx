@@ -80,7 +80,7 @@ function CriteriaWeightingCard() {
               onChange={(e, value) => setRegulatoryWeight(value as number)}
             />
           </div>
-          <Button color="gray-900" text="Update Analysis" />
+          <Button color="primary" text="Update Analysis" />
         </div>
       </CardWrapper>
     </div>

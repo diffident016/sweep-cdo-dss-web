@@ -20,7 +20,7 @@ function ROICalculatorCard() {
         <Input label="Annual Fixed Cost" />
         <Input label="Energy Price" />
         <div className="pt-6">
-          <Button color="gray-900" text="Calculate Financial Metrics" />
+          <Button color="primary" text="Calculate Financial Metrics" />
         </div>
       </div>
     </CardWrapper>
