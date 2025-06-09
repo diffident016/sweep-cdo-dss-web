@@ -15,10 +15,8 @@ function Tab({
   const [activeTab, setActiveTab] = useState<string | undefined>(active);
 
   useEffect(() => {
-    const params = Object.fromEntries(searchParams.entries());
-    if (!params.tab) return;
-    setActiveTab(params.tab);
-  }, [searchParams]);
+    setActiveTab(active);
+  }, [active]);
 
   const handleTabClick = (tab: string) => {
     router.push(pathname + `?tab=${tab}`);
@@ -26,7 +24,7 @@ function Tab({
 
   return (
     <div className="w-full h-12 bg-[var(--background-secondary)] rounded-lg border border-gray-200 shadow-sm select-none">
-      <div className="w-full h-full flex flex-row gap-4 p-1">
+      <div className="w-full h-full min-h-12  flex flex-row gap-4 p-1">
         {tabs.map((tab) => (
           <div
             key={tab.name}

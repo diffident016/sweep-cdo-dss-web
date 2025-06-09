@@ -10,8 +10,8 @@ function Input({
   label?: string;
   type?: HTMLInputTypeAttribute;
   placeholder?: string;
-  register: any;
-  error: any;
+  register?: any;
+  error?: any;
 }) {
   return (
     <>

@@ -10,6 +10,11 @@ import {
   LuListChecks,
   LuPanelLeftClose,
   LuPanelRightClose,
+  LuBoxes,
+  LuLeaf,
+  LuHandCoins,
+  LuChartSpline,
+  LuScale,
 } from "react-icons/lu";
 
 function Sidebar() {
@@ -36,6 +41,31 @@ function Sidebar() {
       name: "Site Selection",
       to: "/dashboard/site-selection",
       icon: <LuMapPinned />,
+    },
+    {
+      name: "Model Simulation",
+      to: "/dashboard/model-simulation",
+      icon: <LuBoxes />,
+    },
+    {
+      name: "Financial Analysis",
+      to: "/dashboard/financial-analysis",
+      icon: <LuHandCoins />,
+    },
+    {
+      name: "Environmental Impact",
+      to: "/dashboard/environmental-impact",
+      icon: <LuLeaf />,
+    },
+    {
+      name: "Multi-Criteria Analysis",
+      to: "/dashboard/multi-criteria-analysis",
+      icon: <LuChartSpline />,
+    },
+    {
+      name: "Policy Assistant",
+      to: "/dashboard/policy-assistant",
+      icon: <LuScale />,
     },
   ];
 

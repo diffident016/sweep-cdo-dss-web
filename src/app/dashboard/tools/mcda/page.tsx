@@ -1,6 +1,12 @@
+import { test } from "@/app/api/services/dss";
+import { getAuthToken } from "@/data/auth";
 import React from "react";
 
-function MDCA() {
+async function MDCA() {
+  const result = await test();
+
+  console.log("MDCA result:", result);
+
   return <div>MCDA</div>;
 }
 
