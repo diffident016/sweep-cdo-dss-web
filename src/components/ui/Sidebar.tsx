@@ -1,79 +1,20 @@
 "use client";
+import { SidebarItems } from "@/data/constants";
+import { SidebarItem } from "@/types/sidebar";
 import { usePathname, useRouter } from "next/navigation";
-import React, { cloneElement, useEffect, useState } from "react";
+import React, { useState } from "react";
+import { IconType } from "react-icons/lib";
 import {
-  LuLayoutDashboard,
-  LuRecycle,
-  LuGitCompareArrows,
-  LuMapPinned,
-  LuMap,
   LuListChecks,
   LuPanelLeftClose,
   LuPanelRightClose,
-  LuBoxes,
-  LuLeaf,
-  LuHandCoins,
-  LuChartSpline,
-  LuScale,
-  LuZap,
 } from "react-icons/lu";
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
   const router = useRouter();
   const path = usePathname();
-  const navigation = [
-    {
-      name: "Dashboard",
-      to: "/dashboard",
-      icon: <LuLayoutDashboard />,
-    },
-    {
-      name: "Waste Analysis",
-      to: "/dashboard/waste-analysis",
-      icon: <LuRecycle />,
-    },
-    {
-      name: "Technology Comparison",
-      to: "/dashboard/technology-comparison",
-      icon: <LuGitCompareArrows />,
-    },
-    {
-      name: "Site Selection",
-      to: "/dashboard/site-selection",
-      icon: <LuMapPinned />,
-    },
-    {
-      name: "Model Simulation",
-      to: "/dashboard/model-simulation",
-      icon: <LuBoxes />,
-    },
-    {
-      name: "Financial Analysis",
-      to: "/dashboard/financial-analysis",
-      icon: <LuHandCoins />,
-    },
-    {
-      name: "Environmental Impact",
-      to: "/dashboard/environmental-impact",
-      icon: <LuLeaf />,
-    },
-    {
-      name: "Multi-Criteria Analysis",
-      to: "/dashboard/multi-criteria-analysis",
-      icon: <LuChartSpline />,
-    },
-    {
-      name: "Policy Assistant",
-      to: "/dashboard/policy-assistant",
-      icon: <LuScale />,
-    },
-    {
-      name: "Load Profile",
-      to: "/dashboard/load-profile",
-      icon: <LuZap />,
-    },
-  ];
+  const navigation = SidebarItems;
 
   const tools = [
     {
@@ -83,11 +24,11 @@ function Sidebar() {
     },
   ];
 
-  const sideBarItem = ({
-    item,
-  }: {
-    item: { name: string; to: string; icon: React.JSX.Element };
-  }) => {
+  const SidebarIcon = ({ Icon }: { Icon: IconType }) => {
+    return <Icon size={22} />;
+  };
+
+  const sideBarItem = ({ item }: { item: SidebarItem }) => {
     return (
       <li key={item.name} className="w-full relative h-9">
         <button
@@ -101,7 +42,7 @@ function Sidebar() {
             isOpen ? "p-2 rounded-md" : "p-0 py-2 justify-center"
           } transition duration-300 `}
         >
-          {cloneElement(item.icon, { size: 22 })}
+          <SidebarIcon Icon={item.icon} />
           {isOpen && item.name}
         </button>
         {path === item.to && !isOpen && (
@@ -140,18 +81,17 @@ function Sidebar() {
           <ul className={`w-full flex flex-col mt-4 gap-3`}>
             {navigation.map((item) => sideBarItem({ item }))}
           </ul>
-          {isOpen ? (
+          {/* {isOpen ? (
             <p className="font-medium pt-3">Tools</p>
           ) : (
             <hr className="w-1/2 mt-2" />
-          )}
-          <ul
+          )} <ul
             className={`w-full flex flex-col mt-2 ${
               isOpen ? "gap-2" : "gap-3"
             }`}
           >
             {tools.map((item) => sideBarItem({ item }))}
-          </ul>
+          </ul> */}
         </div>
       </div>
     </div>

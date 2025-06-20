@@ -130,6 +130,33 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.LoadProfileScalarFieldEnum = {
+  id: 'id',
+  index: 'index',
+  name: 'name',
+  provider: 'provider',
+  year: 'year',
+  data: 'data',
+  file: 'file',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FileScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  path: 'path',
+  size: 'size',
+  type: 'type',
+  module: 'module',
+  active: 'active',
+  status: 'status',
+  fileId: 'fileId',
+  uploadedBy: 'uploadedBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -143,9 +170,32 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   role: 'role'
 };
 
+exports.Prisma.LoadProfileOrderByRelevanceFieldEnum = {
+  id: 'id',
+  index: 'index',
+  name: 'name',
+  provider: 'provider',
+  year: 'year',
+  data: 'data',
+  file: 'file'
+};
+
+exports.Prisma.FileOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  path: 'path',
+  type: 'type',
+  module: 'module',
+  status: 'status',
+  fileId: 'fileId',
+  uploadedBy: 'uploadedBy'
+};
+
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  LoadProfile: 'LoadProfile',
+  File: 'File'
 };
 
 /**

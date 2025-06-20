@@ -3,7 +3,8 @@ import { logOut } from "@/action/auth";
 import { User } from "@/types/user";
 import { getInitial, getRoleName } from "@/utils/formats";
 import { ClickAwayListener } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import React, { cloneElement, useEffect, useState } from "react";
 import {
   LuChevronDown,
   LuChevronUp,
@@ -16,6 +17,8 @@ function UserHeader({ user }: { user: User }) {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+
+  const router = useRouter();
 
   const options = [
     { label: "Profile", value: "profile", icon: <LuUserRound /> },
@@ -42,8 +45,7 @@ function UserHeader({ user }: { user: User }) {
   const handleOptionClick = async (option: { value: string }) => {
     switch (option.value) {
       case "profile":
-        // Handle profile click
-        console.log("Profile clicked");
+        router.push(`/dashboard/profile`);
         break;
       case "settings":
         // Handle settings click
@@ -89,15 +91,17 @@ function UserHeader({ user }: { user: User }) {
       </div>
       {toggleMenu && (
         <ClickAwayListener onClickAway={() => setToggleMenu(false)}>
-          <div className="select-none absolute z-10 top-12 right-4 w-40 bg-white rounded-lg shadow-lg flex flex-col py-1">
+          <div className="select-none absolute z-10 top-12 right-4 w-42 bg-white rounded-lg shadow-lg flex flex-col py-1">
             {options.map((option) => (
               <div
                 onClick={() => handleOptionClick(option)}
                 key={option.value}
-                className="flex items-center gap-2 p-3 hover:bg-gray-100 cursor-pointer transition-all duration-300 px-4"
+                className="flex items-center gap-3 p-3 hover:bg-gray-100 cursor-pointer transition-all duration-300 px-4"
               >
-                {option.icon}
-                <span className="text-sm font-medium">{option.label}</span>
+                {cloneElement(option.icon, {
+                  className: "w-5 h-5",
+                })}
+                <span className="text-base font-medium">{option.label}</span>
               </div>
             ))}
           </div>

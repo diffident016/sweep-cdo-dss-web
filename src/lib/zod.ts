@@ -9,3 +9,9 @@ export const LoginSchema = object({
     "Password is required"
   ),
 });
+
+export const UserSchema = object({
+  name: string().min(1, "Name is required"),
+  email: string().email("Invalid email"),
+  role: string().min(1, "Role is required"),
+});

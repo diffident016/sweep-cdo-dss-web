@@ -18,6 +18,16 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model LoadProfile
+ * 
+ */
+export type LoadProfile = $Result.DefaultSelection<Prisma.$LoadProfilePayload>
+/**
+ * Model File
+ * 
+ */
+export type File = $Result.DefaultSelection<Prisma.$FilePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +163,26 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.loadProfile`: Exposes CRUD operations for the **LoadProfile** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more LoadProfiles
+    * const loadProfiles = await prisma.loadProfile.findMany()
+    * ```
+    */
+  get loadProfile(): Prisma.LoadProfileDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.file`: Exposes CRUD operations for the **File** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Files
+    * const files = await prisma.file.findMany()
+    * ```
+    */
+  get file(): Prisma.FileDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +623,9 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User'
+    User: 'User',
+    LoadProfile: 'LoadProfile',
+    File: 'File'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,7 +644,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user"
+      modelProps: "user" | "loadProfile" | "file"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -679,6 +711,138 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      LoadProfile: {
+        payload: Prisma.$LoadProfilePayload<ExtArgs>
+        fields: Prisma.LoadProfileFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LoadProfileFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoadProfilePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LoadProfileFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoadProfilePayload>
+          }
+          findFirst: {
+            args: Prisma.LoadProfileFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoadProfilePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LoadProfileFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoadProfilePayload>
+          }
+          findMany: {
+            args: Prisma.LoadProfileFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoadProfilePayload>[]
+          }
+          create: {
+            args: Prisma.LoadProfileCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoadProfilePayload>
+          }
+          createMany: {
+            args: Prisma.LoadProfileCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.LoadProfileDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoadProfilePayload>
+          }
+          update: {
+            args: Prisma.LoadProfileUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoadProfilePayload>
+          }
+          deleteMany: {
+            args: Prisma.LoadProfileDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LoadProfileUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.LoadProfileUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoadProfilePayload>
+          }
+          aggregate: {
+            args: Prisma.LoadProfileAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLoadProfile>
+          }
+          groupBy: {
+            args: Prisma.LoadProfileGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LoadProfileGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LoadProfileCountArgs<ExtArgs>
+            result: $Utils.Optional<LoadProfileCountAggregateOutputType> | number
+          }
+        }
+      }
+      File: {
+        payload: Prisma.$FilePayload<ExtArgs>
+        fields: Prisma.FileFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FileFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FilePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FileFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FilePayload>
+          }
+          findFirst: {
+            args: Prisma.FileFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FilePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FileFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FilePayload>
+          }
+          findMany: {
+            args: Prisma.FileFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FilePayload>[]
+          }
+          create: {
+            args: Prisma.FileCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FilePayload>
+          }
+          createMany: {
+            args: Prisma.FileCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.FileDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FilePayload>
+          }
+          update: {
+            args: Prisma.FileUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FilePayload>
+          }
+          deleteMany: {
+            args: Prisma.FileDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FileUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.FileUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FilePayload>
+          }
+          aggregate: {
+            args: Prisma.FileAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFile>
+          }
+          groupBy: {
+            args: Prisma.FileGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FileGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FileCountArgs<ExtArgs>
+            result: $Utils.Optional<FileCountAggregateOutputType> | number
           }
         }
       }
@@ -767,6 +931,8 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
+    loadProfile?: LoadProfileOmit
+    file?: FileOmit
   }
 
   /* Types for Logging */
@@ -1766,6 +1932,1925 @@ export namespace Prisma {
 
 
   /**
+   * Model LoadProfile
+   */
+
+  export type AggregateLoadProfile = {
+    _count: LoadProfileCountAggregateOutputType | null
+    _min: LoadProfileMinAggregateOutputType | null
+    _max: LoadProfileMaxAggregateOutputType | null
+  }
+
+  export type LoadProfileMinAggregateOutputType = {
+    id: string | null
+    index: string | null
+    name: string | null
+    provider: string | null
+    year: string | null
+    data: string | null
+    file: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type LoadProfileMaxAggregateOutputType = {
+    id: string | null
+    index: string | null
+    name: string | null
+    provider: string | null
+    year: string | null
+    data: string | null
+    file: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type LoadProfileCountAggregateOutputType = {
+    id: number
+    index: number
+    name: number
+    provider: number
+    year: number
+    data: number
+    file: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type LoadProfileMinAggregateInputType = {
+    id?: true
+    index?: true
+    name?: true
+    provider?: true
+    year?: true
+    data?: true
+    file?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type LoadProfileMaxAggregateInputType = {
+    id?: true
+    index?: true
+    name?: true
+    provider?: true
+    year?: true
+    data?: true
+    file?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type LoadProfileCountAggregateInputType = {
+    id?: true
+    index?: true
+    name?: true
+    provider?: true
+    year?: true
+    data?: true
+    file?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type LoadProfileAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LoadProfile to aggregate.
+     */
+    where?: LoadProfileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LoadProfiles to fetch.
+     */
+    orderBy?: LoadProfileOrderByWithRelationInput | LoadProfileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LoadProfileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LoadProfiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LoadProfiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned LoadProfiles
+    **/
+    _count?: true | LoadProfileCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LoadProfileMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LoadProfileMaxAggregateInputType
+  }
+
+  export type GetLoadProfileAggregateType<T extends LoadProfileAggregateArgs> = {
+        [P in keyof T & keyof AggregateLoadProfile]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLoadProfile[P]>
+      : GetScalarType<T[P], AggregateLoadProfile[P]>
+  }
+
+
+
+
+  export type LoadProfileGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LoadProfileWhereInput
+    orderBy?: LoadProfileOrderByWithAggregationInput | LoadProfileOrderByWithAggregationInput[]
+    by: LoadProfileScalarFieldEnum[] | LoadProfileScalarFieldEnum
+    having?: LoadProfileScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LoadProfileCountAggregateInputType | true
+    _min?: LoadProfileMinAggregateInputType
+    _max?: LoadProfileMaxAggregateInputType
+  }
+
+  export type LoadProfileGroupByOutputType = {
+    id: string
+    index: string
+    name: string
+    provider: string
+    year: string
+    data: string
+    file: string
+    createdAt: Date
+    updatedAt: Date
+    _count: LoadProfileCountAggregateOutputType | null
+    _min: LoadProfileMinAggregateOutputType | null
+    _max: LoadProfileMaxAggregateOutputType | null
+  }
+
+  type GetLoadProfileGroupByPayload<T extends LoadProfileGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LoadProfileGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LoadProfileGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LoadProfileGroupByOutputType[P]>
+            : GetScalarType<T[P], LoadProfileGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LoadProfileSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    index?: boolean
+    name?: boolean
+    provider?: boolean
+    year?: boolean
+    data?: boolean
+    file?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["loadProfile"]>
+
+
+
+  export type LoadProfileSelectScalar = {
+    id?: boolean
+    index?: boolean
+    name?: boolean
+    provider?: boolean
+    year?: boolean
+    data?: boolean
+    file?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type LoadProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "index" | "name" | "provider" | "year" | "data" | "file" | "createdAt" | "updatedAt", ExtArgs["result"]["loadProfile"]>
+
+  export type $LoadProfilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "LoadProfile"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      index: string
+      name: string
+      provider: string
+      year: string
+      data: string
+      file: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["loadProfile"]>
+    composites: {}
+  }
+
+  type LoadProfileGetPayload<S extends boolean | null | undefined | LoadProfileDefaultArgs> = $Result.GetResult<Prisma.$LoadProfilePayload, S>
+
+  type LoadProfileCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LoadProfileFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LoadProfileCountAggregateInputType | true
+    }
+
+  export interface LoadProfileDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LoadProfile'], meta: { name: 'LoadProfile' } }
+    /**
+     * Find zero or one LoadProfile that matches the filter.
+     * @param {LoadProfileFindUniqueArgs} args - Arguments to find a LoadProfile
+     * @example
+     * // Get one LoadProfile
+     * const loadProfile = await prisma.loadProfile.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LoadProfileFindUniqueArgs>(args: SelectSubset<T, LoadProfileFindUniqueArgs<ExtArgs>>): Prisma__LoadProfileClient<$Result.GetResult<Prisma.$LoadProfilePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one LoadProfile that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LoadProfileFindUniqueOrThrowArgs} args - Arguments to find a LoadProfile
+     * @example
+     * // Get one LoadProfile
+     * const loadProfile = await prisma.loadProfile.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LoadProfileFindUniqueOrThrowArgs>(args: SelectSubset<T, LoadProfileFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LoadProfileClient<$Result.GetResult<Prisma.$LoadProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LoadProfile that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LoadProfileFindFirstArgs} args - Arguments to find a LoadProfile
+     * @example
+     * // Get one LoadProfile
+     * const loadProfile = await prisma.loadProfile.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LoadProfileFindFirstArgs>(args?: SelectSubset<T, LoadProfileFindFirstArgs<ExtArgs>>): Prisma__LoadProfileClient<$Result.GetResult<Prisma.$LoadProfilePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LoadProfile that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LoadProfileFindFirstOrThrowArgs} args - Arguments to find a LoadProfile
+     * @example
+     * // Get one LoadProfile
+     * const loadProfile = await prisma.loadProfile.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LoadProfileFindFirstOrThrowArgs>(args?: SelectSubset<T, LoadProfileFindFirstOrThrowArgs<ExtArgs>>): Prisma__LoadProfileClient<$Result.GetResult<Prisma.$LoadProfilePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more LoadProfiles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LoadProfileFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all LoadProfiles
+     * const loadProfiles = await prisma.loadProfile.findMany()
+     * 
+     * // Get first 10 LoadProfiles
+     * const loadProfiles = await prisma.loadProfile.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const loadProfileWithIdOnly = await prisma.loadProfile.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LoadProfileFindManyArgs>(args?: SelectSubset<T, LoadProfileFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LoadProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a LoadProfile.
+     * @param {LoadProfileCreateArgs} args - Arguments to create a LoadProfile.
+     * @example
+     * // Create one LoadProfile
+     * const LoadProfile = await prisma.loadProfile.create({
+     *   data: {
+     *     // ... data to create a LoadProfile
+     *   }
+     * })
+     * 
+     */
+    create<T extends LoadProfileCreateArgs>(args: SelectSubset<T, LoadProfileCreateArgs<ExtArgs>>): Prisma__LoadProfileClient<$Result.GetResult<Prisma.$LoadProfilePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many LoadProfiles.
+     * @param {LoadProfileCreateManyArgs} args - Arguments to create many LoadProfiles.
+     * @example
+     * // Create many LoadProfiles
+     * const loadProfile = await prisma.loadProfile.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LoadProfileCreateManyArgs>(args?: SelectSubset<T, LoadProfileCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a LoadProfile.
+     * @param {LoadProfileDeleteArgs} args - Arguments to delete one LoadProfile.
+     * @example
+     * // Delete one LoadProfile
+     * const LoadProfile = await prisma.loadProfile.delete({
+     *   where: {
+     *     // ... filter to delete one LoadProfile
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LoadProfileDeleteArgs>(args: SelectSubset<T, LoadProfileDeleteArgs<ExtArgs>>): Prisma__LoadProfileClient<$Result.GetResult<Prisma.$LoadProfilePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one LoadProfile.
+     * @param {LoadProfileUpdateArgs} args - Arguments to update one LoadProfile.
+     * @example
+     * // Update one LoadProfile
+     * const loadProfile = await prisma.loadProfile.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LoadProfileUpdateArgs>(args: SelectSubset<T, LoadProfileUpdateArgs<ExtArgs>>): Prisma__LoadProfileClient<$Result.GetResult<Prisma.$LoadProfilePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more LoadProfiles.
+     * @param {LoadProfileDeleteManyArgs} args - Arguments to filter LoadProfiles to delete.
+     * @example
+     * // Delete a few LoadProfiles
+     * const { count } = await prisma.loadProfile.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LoadProfileDeleteManyArgs>(args?: SelectSubset<T, LoadProfileDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LoadProfiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LoadProfileUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many LoadProfiles
+     * const loadProfile = await prisma.loadProfile.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LoadProfileUpdateManyArgs>(args: SelectSubset<T, LoadProfileUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one LoadProfile.
+     * @param {LoadProfileUpsertArgs} args - Arguments to update or create a LoadProfile.
+     * @example
+     * // Update or create a LoadProfile
+     * const loadProfile = await prisma.loadProfile.upsert({
+     *   create: {
+     *     // ... data to create a LoadProfile
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the LoadProfile we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LoadProfileUpsertArgs>(args: SelectSubset<T, LoadProfileUpsertArgs<ExtArgs>>): Prisma__LoadProfileClient<$Result.GetResult<Prisma.$LoadProfilePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of LoadProfiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LoadProfileCountArgs} args - Arguments to filter LoadProfiles to count.
+     * @example
+     * // Count the number of LoadProfiles
+     * const count = await prisma.loadProfile.count({
+     *   where: {
+     *     // ... the filter for the LoadProfiles we want to count
+     *   }
+     * })
+    **/
+    count<T extends LoadProfileCountArgs>(
+      args?: Subset<T, LoadProfileCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LoadProfileCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a LoadProfile.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LoadProfileAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LoadProfileAggregateArgs>(args: Subset<T, LoadProfileAggregateArgs>): Prisma.PrismaPromise<GetLoadProfileAggregateType<T>>
+
+    /**
+     * Group by LoadProfile.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LoadProfileGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LoadProfileGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LoadProfileGroupByArgs['orderBy'] }
+        : { orderBy?: LoadProfileGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LoadProfileGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLoadProfileGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the LoadProfile model
+   */
+  readonly fields: LoadProfileFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for LoadProfile.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LoadProfileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the LoadProfile model
+   */
+  interface LoadProfileFieldRefs {
+    readonly id: FieldRef<"LoadProfile", 'String'>
+    readonly index: FieldRef<"LoadProfile", 'String'>
+    readonly name: FieldRef<"LoadProfile", 'String'>
+    readonly provider: FieldRef<"LoadProfile", 'String'>
+    readonly year: FieldRef<"LoadProfile", 'String'>
+    readonly data: FieldRef<"LoadProfile", 'String'>
+    readonly file: FieldRef<"LoadProfile", 'String'>
+    readonly createdAt: FieldRef<"LoadProfile", 'DateTime'>
+    readonly updatedAt: FieldRef<"LoadProfile", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * LoadProfile findUnique
+   */
+  export type LoadProfileFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoadProfile
+     */
+    select?: LoadProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoadProfile
+     */
+    omit?: LoadProfileOmit<ExtArgs> | null
+    /**
+     * Filter, which LoadProfile to fetch.
+     */
+    where: LoadProfileWhereUniqueInput
+  }
+
+  /**
+   * LoadProfile findUniqueOrThrow
+   */
+  export type LoadProfileFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoadProfile
+     */
+    select?: LoadProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoadProfile
+     */
+    omit?: LoadProfileOmit<ExtArgs> | null
+    /**
+     * Filter, which LoadProfile to fetch.
+     */
+    where: LoadProfileWhereUniqueInput
+  }
+
+  /**
+   * LoadProfile findFirst
+   */
+  export type LoadProfileFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoadProfile
+     */
+    select?: LoadProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoadProfile
+     */
+    omit?: LoadProfileOmit<ExtArgs> | null
+    /**
+     * Filter, which LoadProfile to fetch.
+     */
+    where?: LoadProfileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LoadProfiles to fetch.
+     */
+    orderBy?: LoadProfileOrderByWithRelationInput | LoadProfileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LoadProfiles.
+     */
+    cursor?: LoadProfileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LoadProfiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LoadProfiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LoadProfiles.
+     */
+    distinct?: LoadProfileScalarFieldEnum | LoadProfileScalarFieldEnum[]
+  }
+
+  /**
+   * LoadProfile findFirstOrThrow
+   */
+  export type LoadProfileFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoadProfile
+     */
+    select?: LoadProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoadProfile
+     */
+    omit?: LoadProfileOmit<ExtArgs> | null
+    /**
+     * Filter, which LoadProfile to fetch.
+     */
+    where?: LoadProfileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LoadProfiles to fetch.
+     */
+    orderBy?: LoadProfileOrderByWithRelationInput | LoadProfileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LoadProfiles.
+     */
+    cursor?: LoadProfileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LoadProfiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LoadProfiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LoadProfiles.
+     */
+    distinct?: LoadProfileScalarFieldEnum | LoadProfileScalarFieldEnum[]
+  }
+
+  /**
+   * LoadProfile findMany
+   */
+  export type LoadProfileFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoadProfile
+     */
+    select?: LoadProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoadProfile
+     */
+    omit?: LoadProfileOmit<ExtArgs> | null
+    /**
+     * Filter, which LoadProfiles to fetch.
+     */
+    where?: LoadProfileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LoadProfiles to fetch.
+     */
+    orderBy?: LoadProfileOrderByWithRelationInput | LoadProfileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing LoadProfiles.
+     */
+    cursor?: LoadProfileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LoadProfiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LoadProfiles.
+     */
+    skip?: number
+    distinct?: LoadProfileScalarFieldEnum | LoadProfileScalarFieldEnum[]
+  }
+
+  /**
+   * LoadProfile create
+   */
+  export type LoadProfileCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoadProfile
+     */
+    select?: LoadProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoadProfile
+     */
+    omit?: LoadProfileOmit<ExtArgs> | null
+    /**
+     * The data needed to create a LoadProfile.
+     */
+    data: XOR<LoadProfileCreateInput, LoadProfileUncheckedCreateInput>
+  }
+
+  /**
+   * LoadProfile createMany
+   */
+  export type LoadProfileCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many LoadProfiles.
+     */
+    data: LoadProfileCreateManyInput | LoadProfileCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * LoadProfile update
+   */
+  export type LoadProfileUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoadProfile
+     */
+    select?: LoadProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoadProfile
+     */
+    omit?: LoadProfileOmit<ExtArgs> | null
+    /**
+     * The data needed to update a LoadProfile.
+     */
+    data: XOR<LoadProfileUpdateInput, LoadProfileUncheckedUpdateInput>
+    /**
+     * Choose, which LoadProfile to update.
+     */
+    where: LoadProfileWhereUniqueInput
+  }
+
+  /**
+   * LoadProfile updateMany
+   */
+  export type LoadProfileUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update LoadProfiles.
+     */
+    data: XOR<LoadProfileUpdateManyMutationInput, LoadProfileUncheckedUpdateManyInput>
+    /**
+     * Filter which LoadProfiles to update
+     */
+    where?: LoadProfileWhereInput
+    /**
+     * Limit how many LoadProfiles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * LoadProfile upsert
+   */
+  export type LoadProfileUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoadProfile
+     */
+    select?: LoadProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoadProfile
+     */
+    omit?: LoadProfileOmit<ExtArgs> | null
+    /**
+     * The filter to search for the LoadProfile to update in case it exists.
+     */
+    where: LoadProfileWhereUniqueInput
+    /**
+     * In case the LoadProfile found by the `where` argument doesn't exist, create a new LoadProfile with this data.
+     */
+    create: XOR<LoadProfileCreateInput, LoadProfileUncheckedCreateInput>
+    /**
+     * In case the LoadProfile was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LoadProfileUpdateInput, LoadProfileUncheckedUpdateInput>
+  }
+
+  /**
+   * LoadProfile delete
+   */
+  export type LoadProfileDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoadProfile
+     */
+    select?: LoadProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoadProfile
+     */
+    omit?: LoadProfileOmit<ExtArgs> | null
+    /**
+     * Filter which LoadProfile to delete.
+     */
+    where: LoadProfileWhereUniqueInput
+  }
+
+  /**
+   * LoadProfile deleteMany
+   */
+  export type LoadProfileDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LoadProfiles to delete
+     */
+    where?: LoadProfileWhereInput
+    /**
+     * Limit how many LoadProfiles to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * LoadProfile without action
+   */
+  export type LoadProfileDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoadProfile
+     */
+    select?: LoadProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoadProfile
+     */
+    omit?: LoadProfileOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model File
+   */
+
+  export type AggregateFile = {
+    _count: FileCountAggregateOutputType | null
+    _avg: FileAvgAggregateOutputType | null
+    _sum: FileSumAggregateOutputType | null
+    _min: FileMinAggregateOutputType | null
+    _max: FileMaxAggregateOutputType | null
+  }
+
+  export type FileAvgAggregateOutputType = {
+    size: number | null
+  }
+
+  export type FileSumAggregateOutputType = {
+    size: number | null
+  }
+
+  export type FileMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    path: string | null
+    size: number | null
+    type: string | null
+    module: string | null
+    active: boolean | null
+    status: string | null
+    fileId: string | null
+    uploadedBy: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FileMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    path: string | null
+    size: number | null
+    type: string | null
+    module: string | null
+    active: boolean | null
+    status: string | null
+    fileId: string | null
+    uploadedBy: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FileCountAggregateOutputType = {
+    id: number
+    name: number
+    path: number
+    size: number
+    type: number
+    module: number
+    active: number
+    status: number
+    fileId: number
+    uploadedBy: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type FileAvgAggregateInputType = {
+    size?: true
+  }
+
+  export type FileSumAggregateInputType = {
+    size?: true
+  }
+
+  export type FileMinAggregateInputType = {
+    id?: true
+    name?: true
+    path?: true
+    size?: true
+    type?: true
+    module?: true
+    active?: true
+    status?: true
+    fileId?: true
+    uploadedBy?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FileMaxAggregateInputType = {
+    id?: true
+    name?: true
+    path?: true
+    size?: true
+    type?: true
+    module?: true
+    active?: true
+    status?: true
+    fileId?: true
+    uploadedBy?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FileCountAggregateInputType = {
+    id?: true
+    name?: true
+    path?: true
+    size?: true
+    type?: true
+    module?: true
+    active?: true
+    status?: true
+    fileId?: true
+    uploadedBy?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type FileAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which File to aggregate.
+     */
+    where?: FileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Files to fetch.
+     */
+    orderBy?: FileOrderByWithRelationInput | FileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Files from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Files.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Files
+    **/
+    _count?: true | FileCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FileAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FileSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FileMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FileMaxAggregateInputType
+  }
+
+  export type GetFileAggregateType<T extends FileAggregateArgs> = {
+        [P in keyof T & keyof AggregateFile]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFile[P]>
+      : GetScalarType<T[P], AggregateFile[P]>
+  }
+
+
+
+
+  export type FileGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FileWhereInput
+    orderBy?: FileOrderByWithAggregationInput | FileOrderByWithAggregationInput[]
+    by: FileScalarFieldEnum[] | FileScalarFieldEnum
+    having?: FileScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FileCountAggregateInputType | true
+    _avg?: FileAvgAggregateInputType
+    _sum?: FileSumAggregateInputType
+    _min?: FileMinAggregateInputType
+    _max?: FileMaxAggregateInputType
+  }
+
+  export type FileGroupByOutputType = {
+    id: string
+    name: string
+    path: string
+    size: number
+    type: string
+    module: string
+    active: boolean
+    status: string
+    fileId: string
+    uploadedBy: string
+    createdAt: Date
+    updatedAt: Date
+    _count: FileCountAggregateOutputType | null
+    _avg: FileAvgAggregateOutputType | null
+    _sum: FileSumAggregateOutputType | null
+    _min: FileMinAggregateOutputType | null
+    _max: FileMaxAggregateOutputType | null
+  }
+
+  type GetFileGroupByPayload<T extends FileGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FileGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FileGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FileGroupByOutputType[P]>
+            : GetScalarType<T[P], FileGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FileSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    path?: boolean
+    size?: boolean
+    type?: boolean
+    module?: boolean
+    active?: boolean
+    status?: boolean
+    fileId?: boolean
+    uploadedBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["file"]>
+
+
+
+  export type FileSelectScalar = {
+    id?: boolean
+    name?: boolean
+    path?: boolean
+    size?: boolean
+    type?: boolean
+    module?: boolean
+    active?: boolean
+    status?: boolean
+    fileId?: boolean
+    uploadedBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type FileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "path" | "size" | "type" | "module" | "active" | "status" | "fileId" | "uploadedBy" | "createdAt" | "updatedAt", ExtArgs["result"]["file"]>
+
+  export type $FilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "File"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      path: string
+      size: number
+      type: string
+      module: string
+      active: boolean
+      status: string
+      fileId: string
+      uploadedBy: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["file"]>
+    composites: {}
+  }
+
+  type FileGetPayload<S extends boolean | null | undefined | FileDefaultArgs> = $Result.GetResult<Prisma.$FilePayload, S>
+
+  type FileCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FileFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FileCountAggregateInputType | true
+    }
+
+  export interface FileDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['File'], meta: { name: 'File' } }
+    /**
+     * Find zero or one File that matches the filter.
+     * @param {FileFindUniqueArgs} args - Arguments to find a File
+     * @example
+     * // Get one File
+     * const file = await prisma.file.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FileFindUniqueArgs>(args: SelectSubset<T, FileFindUniqueArgs<ExtArgs>>): Prisma__FileClient<$Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one File that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FileFindUniqueOrThrowArgs} args - Arguments to find a File
+     * @example
+     * // Get one File
+     * const file = await prisma.file.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FileFindUniqueOrThrowArgs>(args: SelectSubset<T, FileFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FileClient<$Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first File that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FileFindFirstArgs} args - Arguments to find a File
+     * @example
+     * // Get one File
+     * const file = await prisma.file.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FileFindFirstArgs>(args?: SelectSubset<T, FileFindFirstArgs<ExtArgs>>): Prisma__FileClient<$Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first File that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FileFindFirstOrThrowArgs} args - Arguments to find a File
+     * @example
+     * // Get one File
+     * const file = await prisma.file.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FileFindFirstOrThrowArgs>(args?: SelectSubset<T, FileFindFirstOrThrowArgs<ExtArgs>>): Prisma__FileClient<$Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Files that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FileFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Files
+     * const files = await prisma.file.findMany()
+     * 
+     * // Get first 10 Files
+     * const files = await prisma.file.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const fileWithIdOnly = await prisma.file.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FileFindManyArgs>(args?: SelectSubset<T, FileFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a File.
+     * @param {FileCreateArgs} args - Arguments to create a File.
+     * @example
+     * // Create one File
+     * const File = await prisma.file.create({
+     *   data: {
+     *     // ... data to create a File
+     *   }
+     * })
+     * 
+     */
+    create<T extends FileCreateArgs>(args: SelectSubset<T, FileCreateArgs<ExtArgs>>): Prisma__FileClient<$Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Files.
+     * @param {FileCreateManyArgs} args - Arguments to create many Files.
+     * @example
+     * // Create many Files
+     * const file = await prisma.file.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FileCreateManyArgs>(args?: SelectSubset<T, FileCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a File.
+     * @param {FileDeleteArgs} args - Arguments to delete one File.
+     * @example
+     * // Delete one File
+     * const File = await prisma.file.delete({
+     *   where: {
+     *     // ... filter to delete one File
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FileDeleteArgs>(args: SelectSubset<T, FileDeleteArgs<ExtArgs>>): Prisma__FileClient<$Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one File.
+     * @param {FileUpdateArgs} args - Arguments to update one File.
+     * @example
+     * // Update one File
+     * const file = await prisma.file.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FileUpdateArgs>(args: SelectSubset<T, FileUpdateArgs<ExtArgs>>): Prisma__FileClient<$Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Files.
+     * @param {FileDeleteManyArgs} args - Arguments to filter Files to delete.
+     * @example
+     * // Delete a few Files
+     * const { count } = await prisma.file.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FileDeleteManyArgs>(args?: SelectSubset<T, FileDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Files.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FileUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Files
+     * const file = await prisma.file.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FileUpdateManyArgs>(args: SelectSubset<T, FileUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one File.
+     * @param {FileUpsertArgs} args - Arguments to update or create a File.
+     * @example
+     * // Update or create a File
+     * const file = await prisma.file.upsert({
+     *   create: {
+     *     // ... data to create a File
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the File we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FileUpsertArgs>(args: SelectSubset<T, FileUpsertArgs<ExtArgs>>): Prisma__FileClient<$Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Files.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FileCountArgs} args - Arguments to filter Files to count.
+     * @example
+     * // Count the number of Files
+     * const count = await prisma.file.count({
+     *   where: {
+     *     // ... the filter for the Files we want to count
+     *   }
+     * })
+    **/
+    count<T extends FileCountArgs>(
+      args?: Subset<T, FileCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FileCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a File.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FileAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FileAggregateArgs>(args: Subset<T, FileAggregateArgs>): Prisma.PrismaPromise<GetFileAggregateType<T>>
+
+    /**
+     * Group by File.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FileGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FileGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FileGroupByArgs['orderBy'] }
+        : { orderBy?: FileGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FileGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFileGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the File model
+   */
+  readonly fields: FileFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for File.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the File model
+   */
+  interface FileFieldRefs {
+    readonly id: FieldRef<"File", 'String'>
+    readonly name: FieldRef<"File", 'String'>
+    readonly path: FieldRef<"File", 'String'>
+    readonly size: FieldRef<"File", 'Int'>
+    readonly type: FieldRef<"File", 'String'>
+    readonly module: FieldRef<"File", 'String'>
+    readonly active: FieldRef<"File", 'Boolean'>
+    readonly status: FieldRef<"File", 'String'>
+    readonly fileId: FieldRef<"File", 'String'>
+    readonly uploadedBy: FieldRef<"File", 'String'>
+    readonly createdAt: FieldRef<"File", 'DateTime'>
+    readonly updatedAt: FieldRef<"File", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * File findUnique
+   */
+  export type FileFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the File
+     */
+    select?: FileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the File
+     */
+    omit?: FileOmit<ExtArgs> | null
+    /**
+     * Filter, which File to fetch.
+     */
+    where: FileWhereUniqueInput
+  }
+
+  /**
+   * File findUniqueOrThrow
+   */
+  export type FileFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the File
+     */
+    select?: FileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the File
+     */
+    omit?: FileOmit<ExtArgs> | null
+    /**
+     * Filter, which File to fetch.
+     */
+    where: FileWhereUniqueInput
+  }
+
+  /**
+   * File findFirst
+   */
+  export type FileFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the File
+     */
+    select?: FileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the File
+     */
+    omit?: FileOmit<ExtArgs> | null
+    /**
+     * Filter, which File to fetch.
+     */
+    where?: FileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Files to fetch.
+     */
+    orderBy?: FileOrderByWithRelationInput | FileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Files.
+     */
+    cursor?: FileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Files from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Files.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Files.
+     */
+    distinct?: FileScalarFieldEnum | FileScalarFieldEnum[]
+  }
+
+  /**
+   * File findFirstOrThrow
+   */
+  export type FileFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the File
+     */
+    select?: FileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the File
+     */
+    omit?: FileOmit<ExtArgs> | null
+    /**
+     * Filter, which File to fetch.
+     */
+    where?: FileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Files to fetch.
+     */
+    orderBy?: FileOrderByWithRelationInput | FileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Files.
+     */
+    cursor?: FileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Files from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Files.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Files.
+     */
+    distinct?: FileScalarFieldEnum | FileScalarFieldEnum[]
+  }
+
+  /**
+   * File findMany
+   */
+  export type FileFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the File
+     */
+    select?: FileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the File
+     */
+    omit?: FileOmit<ExtArgs> | null
+    /**
+     * Filter, which Files to fetch.
+     */
+    where?: FileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Files to fetch.
+     */
+    orderBy?: FileOrderByWithRelationInput | FileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Files.
+     */
+    cursor?: FileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Files from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Files.
+     */
+    skip?: number
+    distinct?: FileScalarFieldEnum | FileScalarFieldEnum[]
+  }
+
+  /**
+   * File create
+   */
+  export type FileCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the File
+     */
+    select?: FileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the File
+     */
+    omit?: FileOmit<ExtArgs> | null
+    /**
+     * The data needed to create a File.
+     */
+    data: XOR<FileCreateInput, FileUncheckedCreateInput>
+  }
+
+  /**
+   * File createMany
+   */
+  export type FileCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Files.
+     */
+    data: FileCreateManyInput | FileCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * File update
+   */
+  export type FileUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the File
+     */
+    select?: FileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the File
+     */
+    omit?: FileOmit<ExtArgs> | null
+    /**
+     * The data needed to update a File.
+     */
+    data: XOR<FileUpdateInput, FileUncheckedUpdateInput>
+    /**
+     * Choose, which File to update.
+     */
+    where: FileWhereUniqueInput
+  }
+
+  /**
+   * File updateMany
+   */
+  export type FileUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Files.
+     */
+    data: XOR<FileUpdateManyMutationInput, FileUncheckedUpdateManyInput>
+    /**
+     * Filter which Files to update
+     */
+    where?: FileWhereInput
+    /**
+     * Limit how many Files to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * File upsert
+   */
+  export type FileUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the File
+     */
+    select?: FileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the File
+     */
+    omit?: FileOmit<ExtArgs> | null
+    /**
+     * The filter to search for the File to update in case it exists.
+     */
+    where: FileWhereUniqueInput
+    /**
+     * In case the File found by the `where` argument doesn't exist, create a new File with this data.
+     */
+    create: XOR<FileCreateInput, FileUncheckedCreateInput>
+    /**
+     * In case the File was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FileUpdateInput, FileUncheckedUpdateInput>
+  }
+
+  /**
+   * File delete
+   */
+  export type FileDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the File
+     */
+    select?: FileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the File
+     */
+    omit?: FileOmit<ExtArgs> | null
+    /**
+     * Filter which File to delete.
+     */
+    where: FileWhereUniqueInput
+  }
+
+  /**
+   * File deleteMany
+   */
+  export type FileDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Files to delete
+     */
+    where?: FileWhereInput
+    /**
+     * Limit how many Files to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * File without action
+   */
+  export type FileDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the File
+     */
+    select?: FileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the File
+     */
+    omit?: FileOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -1792,6 +3877,39 @@ export namespace Prisma {
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+  export const LoadProfileScalarFieldEnum: {
+    id: 'id',
+    index: 'index',
+    name: 'name',
+    provider: 'provider',
+    year: 'year',
+    data: 'data',
+    file: 'file',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type LoadProfileScalarFieldEnum = (typeof LoadProfileScalarFieldEnum)[keyof typeof LoadProfileScalarFieldEnum]
+
+
+  export const FileScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    path: 'path',
+    size: 'size',
+    type: 'type',
+    module: 'module',
+    active: 'active',
+    status: 'status',
+    fileId: 'fileId',
+    uploadedBy: 'uploadedBy',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type FileScalarFieldEnum = (typeof FileScalarFieldEnum)[keyof typeof FileScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -1809,6 +3927,33 @@ export namespace Prisma {
   };
 
   export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
+
+
+  export const LoadProfileOrderByRelevanceFieldEnum: {
+    id: 'id',
+    index: 'index',
+    name: 'name',
+    provider: 'provider',
+    year: 'year',
+    data: 'data',
+    file: 'file'
+  };
+
+  export type LoadProfileOrderByRelevanceFieldEnum = (typeof LoadProfileOrderByRelevanceFieldEnum)[keyof typeof LoadProfileOrderByRelevanceFieldEnum]
+
+
+  export const FileOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name',
+    path: 'path',
+    type: 'type',
+    module: 'module',
+    status: 'status',
+    fileId: 'fileId',
+    uploadedBy: 'uploadedBy'
+  };
+
+  export type FileOrderByRelevanceFieldEnum = (typeof FileOrderByRelevanceFieldEnum)[keyof typeof FileOrderByRelevanceFieldEnum]
 
 
   /**
@@ -1834,6 +3979,20 @@ export namespace Prisma {
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
     
   /**
    * Deep Input Types
@@ -1903,6 +4062,169 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
 
+  export type LoadProfileWhereInput = {
+    AND?: LoadProfileWhereInput | LoadProfileWhereInput[]
+    OR?: LoadProfileWhereInput[]
+    NOT?: LoadProfileWhereInput | LoadProfileWhereInput[]
+    id?: StringFilter<"LoadProfile"> | string
+    index?: StringFilter<"LoadProfile"> | string
+    name?: StringFilter<"LoadProfile"> | string
+    provider?: StringFilter<"LoadProfile"> | string
+    year?: StringFilter<"LoadProfile"> | string
+    data?: StringFilter<"LoadProfile"> | string
+    file?: StringFilter<"LoadProfile"> | string
+    createdAt?: DateTimeFilter<"LoadProfile"> | Date | string
+    updatedAt?: DateTimeFilter<"LoadProfile"> | Date | string
+  }
+
+  export type LoadProfileOrderByWithRelationInput = {
+    id?: SortOrder
+    index?: SortOrder
+    name?: SortOrder
+    provider?: SortOrder
+    year?: SortOrder
+    data?: SortOrder
+    file?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _relevance?: LoadProfileOrderByRelevanceInput
+  }
+
+  export type LoadProfileWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    index?: string
+    AND?: LoadProfileWhereInput | LoadProfileWhereInput[]
+    OR?: LoadProfileWhereInput[]
+    NOT?: LoadProfileWhereInput | LoadProfileWhereInput[]
+    name?: StringFilter<"LoadProfile"> | string
+    provider?: StringFilter<"LoadProfile"> | string
+    year?: StringFilter<"LoadProfile"> | string
+    data?: StringFilter<"LoadProfile"> | string
+    file?: StringFilter<"LoadProfile"> | string
+    createdAt?: DateTimeFilter<"LoadProfile"> | Date | string
+    updatedAt?: DateTimeFilter<"LoadProfile"> | Date | string
+  }, "id" | "index">
+
+  export type LoadProfileOrderByWithAggregationInput = {
+    id?: SortOrder
+    index?: SortOrder
+    name?: SortOrder
+    provider?: SortOrder
+    year?: SortOrder
+    data?: SortOrder
+    file?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: LoadProfileCountOrderByAggregateInput
+    _max?: LoadProfileMaxOrderByAggregateInput
+    _min?: LoadProfileMinOrderByAggregateInput
+  }
+
+  export type LoadProfileScalarWhereWithAggregatesInput = {
+    AND?: LoadProfileScalarWhereWithAggregatesInput | LoadProfileScalarWhereWithAggregatesInput[]
+    OR?: LoadProfileScalarWhereWithAggregatesInput[]
+    NOT?: LoadProfileScalarWhereWithAggregatesInput | LoadProfileScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"LoadProfile"> | string
+    index?: StringWithAggregatesFilter<"LoadProfile"> | string
+    name?: StringWithAggregatesFilter<"LoadProfile"> | string
+    provider?: StringWithAggregatesFilter<"LoadProfile"> | string
+    year?: StringWithAggregatesFilter<"LoadProfile"> | string
+    data?: StringWithAggregatesFilter<"LoadProfile"> | string
+    file?: StringWithAggregatesFilter<"LoadProfile"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"LoadProfile"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"LoadProfile"> | Date | string
+  }
+
+  export type FileWhereInput = {
+    AND?: FileWhereInput | FileWhereInput[]
+    OR?: FileWhereInput[]
+    NOT?: FileWhereInput | FileWhereInput[]
+    id?: StringFilter<"File"> | string
+    name?: StringFilter<"File"> | string
+    path?: StringFilter<"File"> | string
+    size?: IntFilter<"File"> | number
+    type?: StringFilter<"File"> | string
+    module?: StringFilter<"File"> | string
+    active?: BoolFilter<"File"> | boolean
+    status?: StringFilter<"File"> | string
+    fileId?: StringFilter<"File"> | string
+    uploadedBy?: StringFilter<"File"> | string
+    createdAt?: DateTimeFilter<"File"> | Date | string
+    updatedAt?: DateTimeFilter<"File"> | Date | string
+  }
+
+  export type FileOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    path?: SortOrder
+    size?: SortOrder
+    type?: SortOrder
+    module?: SortOrder
+    active?: SortOrder
+    status?: SortOrder
+    fileId?: SortOrder
+    uploadedBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _relevance?: FileOrderByRelevanceInput
+  }
+
+  export type FileWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    path?: string
+    fileId?: string
+    AND?: FileWhereInput | FileWhereInput[]
+    OR?: FileWhereInput[]
+    NOT?: FileWhereInput | FileWhereInput[]
+    name?: StringFilter<"File"> | string
+    size?: IntFilter<"File"> | number
+    type?: StringFilter<"File"> | string
+    module?: StringFilter<"File"> | string
+    active?: BoolFilter<"File"> | boolean
+    status?: StringFilter<"File"> | string
+    uploadedBy?: StringFilter<"File"> | string
+    createdAt?: DateTimeFilter<"File"> | Date | string
+    updatedAt?: DateTimeFilter<"File"> | Date | string
+  }, "id" | "path" | "fileId">
+
+  export type FileOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    path?: SortOrder
+    size?: SortOrder
+    type?: SortOrder
+    module?: SortOrder
+    active?: SortOrder
+    status?: SortOrder
+    fileId?: SortOrder
+    uploadedBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: FileCountOrderByAggregateInput
+    _avg?: FileAvgOrderByAggregateInput
+    _max?: FileMaxOrderByAggregateInput
+    _min?: FileMinOrderByAggregateInput
+    _sum?: FileSumOrderByAggregateInput
+  }
+
+  export type FileScalarWhereWithAggregatesInput = {
+    AND?: FileScalarWhereWithAggregatesInput | FileScalarWhereWithAggregatesInput[]
+    OR?: FileScalarWhereWithAggregatesInput[]
+    NOT?: FileScalarWhereWithAggregatesInput | FileScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"File"> | string
+    name?: StringWithAggregatesFilter<"File"> | string
+    path?: StringWithAggregatesFilter<"File"> | string
+    size?: IntWithAggregatesFilter<"File"> | number
+    type?: StringWithAggregatesFilter<"File"> | string
+    module?: StringWithAggregatesFilter<"File"> | string
+    active?: BoolWithAggregatesFilter<"File"> | boolean
+    status?: StringWithAggregatesFilter<"File"> | string
+    fileId?: StringWithAggregatesFilter<"File"> | string
+    uploadedBy?: StringWithAggregatesFilter<"File"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"File"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"File"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name: string
@@ -1969,6 +4291,195 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LoadProfileCreateInput = {
+    id?: string
+    index: string
+    name: string
+    provider: string
+    year: string
+    data: string
+    file: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LoadProfileUncheckedCreateInput = {
+    id?: string
+    index: string
+    name: string
+    provider: string
+    year: string
+    data: string
+    file: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LoadProfileUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    index?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    year?: StringFieldUpdateOperationsInput | string
+    data?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LoadProfileUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    index?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    year?: StringFieldUpdateOperationsInput | string
+    data?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LoadProfileCreateManyInput = {
+    id?: string
+    index: string
+    name: string
+    provider: string
+    year: string
+    data: string
+    file: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LoadProfileUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    index?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    year?: StringFieldUpdateOperationsInput | string
+    data?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LoadProfileUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    index?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    provider?: StringFieldUpdateOperationsInput | string
+    year?: StringFieldUpdateOperationsInput | string
+    data?: StringFieldUpdateOperationsInput | string
+    file?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FileCreateInput = {
+    id?: string
+    name: string
+    path: string
+    size: number
+    type: string
+    module: string
+    active?: boolean
+    status?: string
+    fileId: string
+    uploadedBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FileUncheckedCreateInput = {
+    id?: string
+    name: string
+    path: string
+    size: number
+    type: string
+    module: string
+    active?: boolean
+    status?: string
+    fileId: string
+    uploadedBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FileUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    path?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    module?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    status?: StringFieldUpdateOperationsInput | string
+    fileId?: StringFieldUpdateOperationsInput | string
+    uploadedBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FileUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    path?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    module?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    status?: StringFieldUpdateOperationsInput | string
+    fileId?: StringFieldUpdateOperationsInput | string
+    uploadedBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FileCreateManyInput = {
+    id?: string
+    name: string
+    path: string
+    size: number
+    type: string
+    module: string
+    active?: boolean
+    status?: string
+    fileId: string
+    uploadedBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type FileUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    path?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    module?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    status?: StringFieldUpdateOperationsInput | string
+    fileId?: StringFieldUpdateOperationsInput | string
+    uploadedBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type FileUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    path?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    module?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    status?: StringFieldUpdateOperationsInput | string
+    fileId?: StringFieldUpdateOperationsInput | string
+    uploadedBy?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2067,12 +4578,165 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type LoadProfileOrderByRelevanceInput = {
+    fields: LoadProfileOrderByRelevanceFieldEnum | LoadProfileOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type LoadProfileCountOrderByAggregateInput = {
+    id?: SortOrder
+    index?: SortOrder
+    name?: SortOrder
+    provider?: SortOrder
+    year?: SortOrder
+    data?: SortOrder
+    file?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LoadProfileMaxOrderByAggregateInput = {
+    id?: SortOrder
+    index?: SortOrder
+    name?: SortOrder
+    provider?: SortOrder
+    year?: SortOrder
+    data?: SortOrder
+    file?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LoadProfileMinOrderByAggregateInput = {
+    id?: SortOrder
+    index?: SortOrder
+    name?: SortOrder
+    provider?: SortOrder
+    year?: SortOrder
+    data?: SortOrder
+    file?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type FileOrderByRelevanceInput = {
+    fields: FileOrderByRelevanceFieldEnum | FileOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type FileCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    path?: SortOrder
+    size?: SortOrder
+    type?: SortOrder
+    module?: SortOrder
+    active?: SortOrder
+    status?: SortOrder
+    fileId?: SortOrder
+    uploadedBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FileAvgOrderByAggregateInput = {
+    size?: SortOrder
+  }
+
+  export type FileMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    path?: SortOrder
+    size?: SortOrder
+    type?: SortOrder
+    module?: SortOrder
+    active?: SortOrder
+    status?: SortOrder
+    fileId?: SortOrder
+    uploadedBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FileMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    path?: SortOrder
+    size?: SortOrder
+    type?: SortOrder
+    module?: SortOrder
+    active?: SortOrder
+    status?: SortOrder
+    fileId?: SortOrder
+    uploadedBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FileSumOrderByAggregateInput = {
+    size?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2142,6 +4806,46 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
 
